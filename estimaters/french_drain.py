@@ -48,13 +48,16 @@ class Frenchdrain(BaseData):
         #gravel_cost = self.cost(amt_gravel, gravel)
 
         gravel = self.gravel(volume)
-        mgravel = str(BaseData.Markup(self, gravel))
+        mgravel = BaseData.Markup(self, gravel)
+        mgravel = str(round(mgravel))
 
         barrier = self.barrier()
-        mbarrier = str(BaseData.Markup(self, barrier))
+        mbarrier = BaseData.Markup(self, barrier)
+        mbarrier = str(round(mbarrier))
 
         corregated = self.amt_corregated()
-        mcorregated = str(self.Markup(corregated))
+        mcorregated = BaseData.Markup(self, corregated)
+        mcorregated = str(round(mcorregated))
 
         label1 = "=" * 26 +'\n'+  '-' * 8 + " ESTIMATE " + '-' * 8 +'\n'+  '=' * 26
         label2 = "=" * 24 +'\n'+  '-' * 8 + " BUDGET " + '-' * 8 +'\n'+  '=' * 24
@@ -110,14 +113,14 @@ class Frenchdrain(BaseData):
         :returns: amount in tons 
 
         """
-        amt =  BaseData.volume(self)/18.0 
+        amt =  round(BaseData.volume(self)/18.0) 
         cost = self.cost(amt, 'gravel')
         unit = BaseData.getPrices(self)['gravel'][1]
         return cost, amt, unit
 
     def amt_corregated(self):
-        amt = self.l
-        cost = self.cost(amt, 'corregated pipe') 
+        amt = round(self.l)
+        cost = round(self.cost(amt, 'corregated pipe'))
         unit = self.getPrices()['corregated pipe'][1]
         return cost, amt, unit
 
@@ -125,8 +128,23 @@ class Frenchdrain(BaseData):
         """calculate weed barrier
 
         """
-        amt = (self.w * 2 + self.d * 2)*self.l
-        cost = self.cost(amt, 'fabric barrier')
+        amt = round((self.w * 2 + self.d * 2)*self.l)
+        cost = round(self.cost(amt, 'fabric barrier'))
         unit = self.getPrices()['fabric barrier'][1]
         return cost, amt, unit 
+
+    def  tractor(self):
+        """caluculate tractor cost for days rented
+        """
+        pass
+
+    def fittings(self):
+        """Return dictionary of fittings with tup (amt, cost)
+        """
+        pass
+
+    def labor(self, hr_price, workers):
+        """calculate total cost of labor
+        """
+
 
