@@ -289,7 +289,7 @@ class SBN_Comp_Tools:
         length      = int(self.e_length.get())
         width       = int(self.e_width.get())
         height      = int(self.e_depth.get())
-        corregated  = 3 
+        corregated  = 3
         spout_adapt = 0
         tractor     = self.e_tractor.get()
         labor       = self.e_labor.get()
@@ -298,12 +298,12 @@ class SBN_Comp_Tools:
         squaregrate = self.e_squaregrate.get()
         coupling    = self.e_coupling.get()
         yfit        = self.e_yfit.get()
-        trenchgrate = self.e_trenchgrate.get() 
+        trenchgrate = self.e_trenchgrate.get()
         customer = ''
         phone = ''
         email = ''
         lead = ''
-        markup = 0
+        markup = 1.45 
 
 
         job = Frenchdrain(corregated, yfit, coupling, squaregrate,
@@ -311,7 +311,7 @@ class SBN_Comp_Tools:
                 email, phone, lead, markup, length, width,
                 height)
 
-        refresh = job.__str__() 
+        refresh = job.__str__()
 
         self.results.delete(1.0, END)
         new = self.results.insert(INSERT, refresh)
