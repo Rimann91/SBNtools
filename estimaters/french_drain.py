@@ -18,8 +18,7 @@ class Frenchdrain(BaseData):
         h = 0
         """
 
-        super().__init__(customer, email,
-                phone, lead, m, l, w ,h)
+        super().__init__(m, l, w ,h)
 
 
         self.sbncost = 0

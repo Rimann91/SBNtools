@@ -1,9 +1,9 @@
 
 
 class BaseData():
-    """Base polymorphic class for customer & Job info 
+    """Base polymorphic class for Job info
     """
-    def __init__(self, customer, email, phone, lead, markup, l, w, h):
+    def __init__(self, markup, l, w, h):
 
         self.l = 0
         self.w = 0
@@ -14,11 +14,7 @@ class BaseData():
         self.w = w
         self.d = h
         self.h = h
-        self.m = markup
-        self.customer = customer
-        self.email = email
-        self.phone = phone
-        
+        self.markup = markup
 
     def perimeter(self):
         return self.l * 2 + self.w * 2
@@ -34,7 +30,7 @@ class BaseData():
 
         """
         cost = items_method[0] 
-        return cost * self.m 
+        return cost * self.markup 
  
     def getPrices(self):
         target = open("/home/riley/SBNtools/prices.csv", 'r')
@@ -50,4 +46,13 @@ class BaseData():
 
         return(price_dict)
 
-   
+
+class CustomerInfo():
+    """Take info for customer, put in DB"""
+
+    def __inti__(self, customer, email, phone, lead):
+        self.m = markup
+        self.customer = customer
+        self.email = email
+        self.phone = phone
+
